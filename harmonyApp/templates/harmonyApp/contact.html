@@ -1,0 +1,132 @@
+{% load static widget_tweaks %}
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>צור קשר - HarmonyIT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
+  <link rel="shortcut icon"  href="{% static 'fvaion-next.ico' %}">
+  <!-- Add your stylesheets here -->
+  <style>
+    /* Example styling for the contact form */
+    body {
+      font-family: 'Heebo', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .content {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    fieldset {
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+    legend {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      color: #1292b3;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group label {
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+    }
+    .form-control {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+    .error-msg {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
+    .submit-group {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .submit-group button {
+      background-color: #1292b3;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 4px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .submit-group button:hover {
+      background-color: #0f7d98;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1292b3;
+      color: #fff;
+      margin-top: 40px;
+    }
+
+    
+  </style>
+</head>
+<body>
+  <header>
+    <!-- Header content goes here -->
+    <h1 style="text-align: center; margin-top: 20px;">HarmonyIT - צור קשר</h1>
+  </header>
+  
+  <section class="content contact-section">
+    <fieldset>
+      <legend>צור קשר</legend>
+      {% if form.errors %}
+        <div class="error-msg">
+          אנא תקן את השגיאות בטופס.
+        </div>
+      {% endif %}
+      <form id="contactForm" method="post" action="{% url 'contact' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="{{ form.name.id_for_label }}">שם</label>
+          {% render_field form.name class="form-control" placeholder="הכנס את שמך" required="required" %}
+          <div class="error-msg" id="nameError"></div>
+        </div>
+        <div class="form-group">
+          <label for="{{ form.email.id_for_label }}">אימייל</label>
+          {% render_field form.email class="form-control" placeholder="הכנס את האימייל שלך" required="required" %}
+          <div class="error-msg" id="emailError"></div>
+        </div>
+        <div class="form-group">
+          <label for="{{ form.message.id_for_label }}">הודעה</label>
+          {% render_field form.message class="form-control" placeholder="הודעתך כאן" rows="5" required="required" %}
+          <div class="error-msg" id="messageError"></div>
+        </div>
+        <div class="submit-group">
+          <button type="submit">שלח הודעה</button>
+        </div>
+      </form>
+      <div id="feedback" class="mt-3"></div>
+    </fieldset>
+  </section>
+  
+  
+  <footer>
+    © 2025 HarmonyIT - כל הזכויות שמורות.
+  </footer>
+  <!-- Add your JavaScript here (if needed) -->
+</body>
+</html>

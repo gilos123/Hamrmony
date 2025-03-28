@@ -1,0 +1,748 @@
+{% load static widget_tweaks %}
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HarmonyIT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap"
+          rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="shortcut icon"  href="{% static 'fvaion-next.ico' %}">
+    <style>
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Heebo", sans-serif;
+      }
+      body {
+        background-color: #eef3f7;
+        color: #333;
+        margin: 0;
+        padding-top: 110px;
+      }
+
+      /* Header */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #1292b3;
+        color: white;
+        padding: 15px 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        z-index: 1000;
+        transition: background-color 0.3s ease, padding 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .logo img {
+        height: 70px;
+        filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));
+      }
+      .phone {
+        font-size: 1.3em;
+      }
+
+      /* Navigation */
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.3em;
+        padding-bottom: 5px;
+        border-bottom: 3px solid transparent;
+        transition: border-bottom 0.3s;
+      }
+      nav ul li a:hover {
+        border-bottom: 3px solid #afce12;
+      }
+
+      /* Main Content */
+      .content {
+        padding: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Services */
+      .services-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+      }
+      .service {
+        background-color: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 20px;
+        flex: 1;
+        /* Using flex-basis to aim for 3 columns (as on desktop) */
+        flex-basis: calc(33.333% - 20px);
+        text-align: center;
+      }
+      .service img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .service img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      .service h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: #1292b3;
+      }
+      .service p {
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+      .service a {
+        text-decoration: none;
+        background-color: #1292b3;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+      .service a:hover {
+        background-color: #0f7d98;
+      }
+
+      /* Clients */
+      .clients-section {
+        margin-top: 40px;
+        text-align: center;
+      }
+      .clients-section h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        color: #1292b3;
+      }
+      .clients-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+      }
+      .clients-container img {
+        max-width: 140px;
+        transition: transform 0.3s;
+      }
+      .clients-container img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Contact & Form Styles */
+      fieldset {
+        border: none;
+        margin-bottom: 20px;
+        padding: 0;
+      }
+      legend {
+        font-size: 1.8em;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #1292b3;
+      }
+      .contact-section {
+        margin: 60px auto;
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        border-top: 5px solid #1292b3;
+        max-width: 500px;
+        text-align: center;
+      }
+      .contact-section legend {
+        font-size: 2em;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #1292b3;
+        text-align: center;
+      }
+      .contact-section h2 {
+        color: #006a91;
+        font-size: 1.8em;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+      .contact-section input,
+      .contact-section textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 0.95em;
+        box-sizing: border-box;
+      }
+      .contact-section textarea {
+        resize: none;
+        min-height: 80px;
+      }
+      .contact-section button {
+        background: #006a91;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background 0.3s ease;
+      }
+      .contact-section button:hover {
+        background: #004f6b;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 5px;
+        color: #333;
+        font-size: 1.1em;
+      }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 0.95em;
+        box-sizing: border-box;
+        transition: border 0.3s, box-shadow 0.3s;
+        background-color: #fafcfd;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #1a73e8;
+        box-shadow: 0 0 10px rgba(26, 115, 232, 0.2);
+      }
+      .error-msg {
+        color: #e63946;
+        font-size: 0.85em;
+        margin-top: 5px;
+        font-style: italic;
+      }
+      #feedback {
+        text-align: center;
+        margin-top: 10px;
+        font-weight: 500;
+        color: #006a91;
+      }
+      .submit-group button {
+        background-color: #1292b3;
+        color: #ffffff;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 6px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        box-shadow: 0 4px 15px rgba(18, 146, 179, 0.25);
+      }
+      .submit-group button:hover {
+        background-color: #0e7891;
+        transform: translateY(-3px);
+      }
+      .submit-btn {
+        width: 100%;
+        background: #006a91;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s;
+        box-shadow: 0 4px 10px rgba(26, 115, 232, 0.3);
+      }
+      .submit-btn:hover {
+        background: #004f6b;
+        transform: translateY(-3px);
+      }
+      .contact-container {
+        max-width: 500px;
+        margin: 60px auto;
+        padding: 25px;
+        background: #fff;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        border-top: 5px solid #1a73e8;
+        transition: box-shadow 0.3s ease-in-out;
+        text-align: center;
+      }
+      .contact-container:hover {
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      }
+      .contact-container h2 {
+        font-size: 1.8em;
+        color: #006a91;
+        margin-bottom: 15px;
+        text-align: center;
+        font-weight: 600;
+      }
+      .contact-details {
+        margin-top: 30px;
+        padding-top: 20px;
+        text-align: center;
+        color: #555;
+        line-height: 1.6;
+      }
+      .contact-details h3 {
+        color: #1a73e8;
+        margin-bottom: 10px;
+        font-size: 1.5em;
+      }
+      .contact-details a {
+        color: #1a73e8;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .contact-details a:hover {
+        color: #1669c7;
+      }
+      .contact-info {
+        margin-top: 15px;
+        font-size: 0.9em;
+        color: #555;
+      }
+      .contact-info a {
+        color: #006a91;
+        text-decoration: none;
+      }
+      .contact-info a:hover {
+        text-decoration: underline;
+      }
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #1a73e8;
+        color: white;
+        margin-top: 40px;
+      }
+
+      /* Floating Toggle Button */
+      #toggleContactBtn {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1000;
+        background-color: #006a91;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: transform 0.5s ease, background-color 0.5s ease,
+          opacity 1.2s ease;
+      }
+      #toggleContactBtn:hover {
+        background-color: #004f6b;
+      }
+      /* About Section Card */
+      .professional-card {
+        border: none;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+      }
+      .professional-card .card-title {
+        font-size: 2rem;
+        font-weight: 700;
+        border-bottom: 2px solid #1292b3;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: #333;
+      }
+      .professional-card .card-text {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 1rem;
+      }
+      /* Project Section */
+      .project-section {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+      }
+      .project-section h3 {
+        color: #1292b3;
+        border-bottom: 2px solid #1292b3;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+      /* Custom List Styling */
+      .project-list li {
+        position: relative;
+        padding-right: 1.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+        color: #555;
+      }
+      .project-list li::before {
+        content: "\2713"; /* Check mark symbol */
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: #1292b3;
+        font-size: 1.2rem;
+        line-height: 1;
+      }
+      /* Responsive Image Styling */
+      .project-img img {
+        border-radius: 0.5rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* Responsive Adjustments to Maintain Desktop Layout */
+      @media (max-width: 768px) {
+        header {
+          padding: 12px 20px;
+        }
+        nav ul {
+          gap: 20px;
+        }
+        .phone {
+          font-size: 1.2em;
+        }
+        .content {
+          padding: 30px;
+        }
+        .service {
+          flex-basis: calc(33.333% - 20px);
+        }
+        .clients-container img {
+          max-width: 120px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header {
+          padding: 10px 15px;
+        }
+        .logo img {
+          height: 60px;
+        }
+        nav ul li a {
+          font-size: 1.2em;
+        }
+        .phone {
+          font-size: 1.1em;
+        }
+        .content {
+          padding: 20px;
+        }
+        .service {
+          flex-basis: calc(33.333% - 15px);
+        }
+        .clients-container img {
+          max-width: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="https://harmony-it.co.il/wp-content/uploads/2018/03/logo-Harmony-IT-768x210.jpg"
+             alt="HarmonyIT Logo" />
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="{% url 'home' %}">ראשי</a>
+          </li>
+          <li>
+            <a href="{% url 'about' %}">אודות</a>
+          </li>
+          <li>
+            <a href="{% url 'recommendation' %}">המלצות</a>
+          </li>
+          <li>
+            <a href="{% url 'contact' %}?next=/about/">צור קשר</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="phone">📞 058-4938049</div>
+    </header>
+    <div class="container my-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-11">
+          <div class="card professional-card">
+            <div class="card-body">
+              <h2 class="card-title">אודות Harmony IT</h2>
+              <p class="card-text">
+                Harmony IT מתמחה בהקמה ואפיון של מערכות ERP ו CRM באירגונים
+                ומלכ"רים.
+              </p>
+              <p class="card-text">
+                החברה הוקמה ע"י רויטל טוינה, מנהלת פרויקטים בכירה, מומחית בתחומה
+                עם למעלה מ 15 שנות נסיון בפרוייקטי ERM ו CRM.
+              </p>
+              <p class="card-text">
+                רויטל הינה מהנדסת תעשייה וניהול BS.c מאוניברסיטת תל אביב ובעלת
+                תואר שני במנהל עסקים MBA מאוניברסיטת בר אילן.
+              </p>
+              <p class="card-text">רויטל הינה Salesforce Admin Certified מטעם חברת Salesforce.</p>
+              <p class="card-text">
+                חברת Harmony IT מתמחה במערכות Priority ו Salesforce וכוללת צוות
+                עובדים, מומחים בתחומם: ניהול כספים, ייצור, ארכיטקטורת מערכת,
+                מפתחים.
+              </p>
+              <p class="card-text">
+                מהנסיון והייעוץ בחברות שונות וגדולות במשק, נמצא כי יישום והטמעת
+                מערכות מידע ושיפור התהליכים בארגוניים מובילים בהכרח לצמיחה של
+                הארגון ושיפור הפריון (הגדלת הכנסות/ הקטנת הוצאות).
+              </p>
+              <p class="card-text">
+                רויטל מביאה איתה ניסיון רב וראייה כוללת של תהליכים ארגוניים
+                והבנה של שיטות העבודה המומלצות לייעול וקידום צורכי הארגון. שיטת
+                העבודה כוללת שימוש במתודולוגיה אשר פיתחה עם השנים בהקמה וביישום
+                המערכות.
+              </p>
+              <p class="card-text">
+                Harmony IT בעלת התמחות ייחודית בהדרכת קורס Salesforce ייחודי
+                אותו פתחה לקהל הרחב ובבניית קורס Salesforce בנושאים שונים בהתאם
+                לצרכי הארגון. אנו מקבלים משוב של שביעות רצון גבוהה מהמשתתפים
+                בקורסים, מתהליך הלימוד, מהשימוש בהדגמות המותאמות לתפקידים שונים
+                בארגון והן ביכולת ליישם את תכני הקורס בעבודתם השוטפת.
+              </p>
+              <p class="card-text">
+                בין לקוחותיה של Harmony IT בהווה והעבר נמנים חברות SMB וחברות
+                מובילות במשק כגון: Deloitte, בנק פועלים, כצט פרמבצטיקה, רשת בתי
+                חב"ד, Alomone Labs, Align Technology, דואר ישראל ועוד חברות
+                רבות.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Project Management & Uniqueness Section -->
+    <div class="container my-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-11">
+          <div class="project-section">
+            <div class="row g-5 align-items-center">
+              <!-- Left Column: ניהול הפרויקט -->
+              <div class="col-md-6">
+                <h3 class="fw-bold mb-3">ניהול הפרויקט</h3>
+                <ul class="list-unstyled project-list">
+                  <li>מקצועיות, ידע ומיומנות גבוהה</li>
+                  <li>
+                    חיבור בין אנשים, מנהלים ועובדים בארגון, חיבור בין תהליכים
+                    ומערכות מידע, למקסם, לייעל ולהצמיח את פעילות הארגון.
+                  </li>
+                  <li>
+                    עמידה בסטנדרטים גבוהים ועבודה מתודולוגית, בדגש על אירגונים
+                    אשר כפופים לרגולציה וביקורת חיצונית.
+                  </li>
+                  <li>ליווי צמוד ויחס האישי</li>
+                  <li>שירותים מקיפים בתחום מערכות מידע בארגון</li>
+                </ul>
+              </div>
+              <!-- Right Column: Image -->
+              <div class="col-md-6 project-img">
+                <img src="{% static 'project-management.jpg' %}" alt="ניהול-הפרויקט" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#myModal"
+            id="toggleContactBtn">הצג טופס צור קשר</button>
+    <!-- Modal Structure -->
+    <!-- Enhanced Bootstrap 5 Modal -->
+    <div class="modal fade"
+         id="myModal"
+         tabindex="-1"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content shadow rounded-4 border-0 overflow-hidden">
+          <div class="row g-0">
+            <!-- Left side: Visual Branding -->
+            <div class="col-md-5 d-none d-md-flex bg-primary text-white align-items-center justify-content-center flex-column p-4">
+              <div class="text-center">
+                <i class="fa-solid fa-envelope fa-4x mb-4"></i>
+                <h3 class="mb-3 fw-bold">Harmony IT</h3>
+                <p class="mb-0">
+                  אנחנו כאן כדי לענות על כל השאלות שלך. צור איתנו קשר ונחזור
+                  אליך בהקדם!
+                </p>
+              </div>
+            </div>
+            <!-- Right side: Contact Form -->
+            <div class="col-md-7 bg-white position-relative">
+              <!-- Close Button Positioned at Top-Left -->
+              <button type="button"
+                      class="btn-close position-absolute m-3 top-0 start-0"
+                      data-bs-dismiss="modal"
+                      aria-label="סגור"></button>
+              <div class="modal-header border-0 pb-0 justify-content-center">
+                <h5 class="modal-title text-primary fw-bold" id="myModalLabel">צור קשר</h5>
+              </div>
+              <div class="modal-body pt-1">
+                <form id="contactForm" method="post" action="{% url 'contact' %}">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    <label for="{{ form.name.id_for_label }}" class="form-label">שם מלא</label>
+                    {% render_field form.name placeholder="שם מלא" required="required" class="form-control" %}
+                    <div class="form-text text-danger" id="nameError"></div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="{{ form.email.id_for_label }}" class="form-label">אימייל</label>
+                    {% render_field form.email placeholder="כתובת אימייל" required="required" class="form-control" %}
+                    <div class="form-text text-danger" id="emailError"></div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="{{ form.message.id_for_label }}" class="form-label">הודעה</label>
+                    {% render_field form.message placeholder="כתוב את הודעתך כאן..." rows="4" required="required" class="form-control" %}
+                    <div class="form-text text-danger" id="messageError"></div>
+                  </div>
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                      <i class="fa-solid fa-paper-plane"></i> שלח הודעה
+                    </button>
+                  </div>
+                  <div id="feedback" class="mt-3 text-center"></div>
+                </form>
+              </div>
+              <div class="modal-footer border-0 pt-0">
+                <button type="button"
+                        class="btn btn-outline-secondary"
+                        data-bs-dismiss="modal">סגור</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          document.getElementById("nameError").textContent = "";
+          document.getElementById("emailError").textContent = "";
+          document.getElementById("messageError").textContent = "";
+          document.getElementById("feedback").textContent = "";
+
+          var valid = true;
+          var form = e.target;
+          var formData = new FormData(form);
+
+          if (formData.get("name").trim().length < 2) {
+            document.getElementById("nameError").textContent =
+              "נא להזין שם תקין.";
+            valid = false;
+          }
+          if (!formData.get("email").includes("@")) {
+            document.getElementById("emailError").textContent =
+              "נא להזין אימייל תקין.";
+            valid = false;
+          }
+          if (formData.get("message").trim().length < 10) {
+            document.getElementById("messageError").textContent =
+              "ההודעה חייבת להכיל לפחות 10 תווים.";
+            valid = false;
+          }
+
+          if (!valid) return;
+
+          fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: { "X-Requested-With": "XMLHttpRequest" },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                form.reset();
+                document.getElementById("feedback").textContent =
+                  "תודה, ההודעה נשלחה בהצלחה!";
+              } else {
+                document.getElementById("feedback").textContent =
+                  "אירעה שגיאה, אנא בדוק את הפרטים ונסה שנית.";
+              }
+            })
+            .catch((error) => {
+              document.getElementById("feedback").textContent =
+                "שגיאת מערכת, נסה שוב מאוחר יותר.";
+            });
+        });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleBtn = document.getElementById("toggleContactBtn");
+        const contactContainer = document.getElementById("contactContainer");
+        const footer = document.querySelector("footer");
+
+        // Intersection Observer to hide the toggle button when footer is in view
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                toggleBtn.style.opacity = "0";
+                toggleBtn.style.pointerEvents = "none";
+              } else {
+                toggleBtn.style.opacity = "1";
+                toggleBtn.style.pointerEvents = "auto";
+              }
+            });
+          },
+          {
+            root: null,
+            threshold: 0.1,
+          }
+        );
+
+        if (footer) {
+          observer.observe(footer);
+        }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <footer>
+      © 2025 HarmonyIT - כל הזכויות שמורות.
+    </footer>
+  </body>
+</html>

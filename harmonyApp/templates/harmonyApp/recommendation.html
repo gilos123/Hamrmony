@@ -1,0 +1,589 @@
+{% load static widget_tweaks %}
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HarmonyIT</title>
+        <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap"
+              rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+              rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+        <link rel="shortcut icon" href="{% static 'fvaion-next.ico' %}" />
+        <style>
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Heebo", sans-serif;
+      }
+      body {
+        background-color: #eef3f7;
+        color: #333;
+      }
+      /* Header */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #1292b3;
+        color: white;
+        padding: 15px 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        z-index: 1000;
+        transition: background-color 0.3s ease, padding 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .logo img {
+        height: 70px;
+        filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.3em;
+        padding-bottom: 5px;
+        border-bottom: 3px solid transparent;
+        transition: border-bottom 0.3s;
+      }
+      nav ul li a:hover {
+        border-bottom: 3px solid #afce12;
+      }
+      .phone {
+        font-size: 1.3em;
+      }
+      /* Main Content */
+      .content {
+        padding: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      /* Services Section */
+      .services-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+        margin-top: 30px;
+      }
+      .service {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        flex-basis: calc(33.333% - 20px);
+        text-align: center;
+      }
+      .service img {
+        width: 100%;
+        border-radius: 8px;
+        transition: transform 0.3s;
+      }
+      .service img:hover {
+        transform: scale(1.05);
+      }
+      /* Recommendations Section */
+      .recommendations-section {
+        margin: 60px auto;
+        text-align: center;
+      }
+      .recommendations-section h2 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+        color: #1292b3;
+      }
+      .testimonial-card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      /* Clients Section */
+      .clients-section {
+        margin-top: 40px;
+        text-align: center;
+      }
+      .clients-section h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        color: #1292b3;
+      }
+      .clients-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+      }
+      .clients-container img {
+        max-width: 140px;
+        transition: transform 0.3s;
+      }
+      .clients-container img:hover {
+        transform: scale(1.05);
+      }
+      /* Contact Details */
+      .contact-details {
+        margin-top: 40px;
+        text-align: center;
+      }
+      .contact-details h3 {
+        font-size: 1.8em;
+        color: #1292b3;
+      }
+      .contact-details p {
+        margin: 10px 0;
+      }
+
+      /* About Section Card */
+      .professional-card {
+        border: none;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+      }
+      .professional-card .card-title {
+        font-size: 2rem;
+        font-weight: 700;
+        border-bottom: 2px solid #1292b3;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: #333;
+      }
+      .professional-card .card-text {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 1rem;
+      }
+      /* Floating Toggle Button */
+      #toggleContactBtn {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1000;
+        background-color: #006a91;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s ease, transform 0.3s;
+      }
+      #toggleContactBtn:hover {
+        background-color: #004f6b;
+      }
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #1a73e8;
+        color: white;
+        margin-top: 40px;
+      }
+      @media (max-width: 768px) {
+        .service {
+          flex-basis: calc(50% - 20px);
+        }
+      }
+      @media (max-width: 480px) {
+        .service {
+          flex-basis: 100%;
+        }
+      }
+        </style>
+    </head>
+    <body>
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <img src="https://harmony-it.co.il/wp-content/uploads/2018/03/logo-Harmony-IT-768x210.jpg"
+                     alt="HarmonyIT Logo" />
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}">ראשי</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'about' %}">אודות</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'recommendation' %}">המלצות</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contact' %}?next=/">צור קשר</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="phone">📞 058-4938049</div>
+        </header>
+        <!-- Hero / Welcome Section -->
+        <section class="content">
+            <h1>ברוכים הבאים ל-HarmonyIT</h1>
+            <p>
+                אנו מציעים קורסי הכשרה ב-Salesforce, מערכות CRM, ERP ועוד. מטרתנו היא
+                להקנות למשתתפים את הכלים הדרושים לניהול מערכות מידע בצורה מקצועית.
+            </p>
+        </section>
+        <!-- Recommendations / Testimonials Section -->
+        <section class="content recommendations-section py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">המלצות</h2>
+                <!-- Testimonial Block 1 -->
+                <div class="testimonial-block card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Harmony- IT Salesforce course at Align Technology</h5>
+                        <p class="card-subtitle mb-3 text-muted">
+                            7 Sessions, 60 hours, 12 Participants
+                            <br />
+                            December 2021 - January 2022
+                        </p>
+                        <p>
+                            <strong>מנהלת הקורס ב-Aligntech:</strong>
+                            <br />
+                            <em>"תודה רבה רויטל, על כל העזרה והתמיכה! היה קורס מאתגר
+                            ומוצלח"</em>
+                        </p>
+                        <p>
+                            <strong>משוב משתתפי הקורס:</strong>
+                            <br />
+                            "מדריכים טובים, ומקצועיים עם הרבה סבלנות"
+                            <br />
+                            "הסבלנות, ההדרכה, הדוגמאות"
+                            <br />
+                            "הייתם מצוינים תודה רבה!"
+                        </p>
+                    </div>
+                </div>
+                <!-- Testimonial Block 2 -->
+                <div class="testimonial-block card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Harmony- IT Salesforce Admin course at Deloitte, Course #2</h5>
+                        <p class="card-subtitle mb-3 text-muted">
+                            14 Sessions, 100 hours, 11 Participants
+                            <br />
+                            September 2021 - October 2021
+                        </p>
+                        <p>
+                            <strong>מנהלת הקורס מטעם דלויט:</strong>
+                            <br />
+                            <em>"הי רויטל, תודה רבה לכם, מעריכה מאוד את העבודה וההשקעה, אני
+                                באמת נהנית מאוד מהעבודה מולכם ובטוחה שיהיו לנו עוד פרויקטים כאלו
+                            בהמשך".</em>
+                        </p>
+                        <p>
+                            <strong>משוב משתתפי הקורס:</strong>
+                            <br />
+                            "מדריכים נגישים מועניינים, טיפים טובים ליישום"
+                            <br />
+                            "ההנחיה היתה מאוד סבלנית וקשובה, הרגשתי בנח לשאול שאלות"
+                            <br />
+                            "שילוב של שני מנחים מרחיב אופקים ותרם הרבה"
+                            <br />
+                            "מרצים סבלניים ותמיד עוזרים שצריך, יש יחס אישי לכל אחד"
+                            <br />
+                            "אני ממש מרגישה שזו זכות לקבל את הקורס הזה ואת כל הכלים שלמדתי,
+                            מאוד מקווה שאצליח מהר ליישם ולזכור הכל כשאתחיל פרויקט אמיתי מול
+                            לקוח, למדנו המון המון דברים"
+                        </p>
+                    </div>
+                </div>
+                <!-- Testimonial Block 3 -->
+                <div class="testimonial-block card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <p class="mb-2">
+                            <em>"רויטל, רציתי לציין שמצגת סקר מערכות המידע בארגון אתמול, אשר
+                                סיכמה את התובנות שלך על הארגון הייתה מאד מעניינת וגרמה לנו נחת
+                                ונתנה לנו אופטימיות על כך שניתן לצאת לדרך יעילה ומקצועית יותר,
+                            מצפים להמשך הפעילות".</em>
+                        </p>
+                        <p class="mb-1">
+                            <strong>הלן</strong>
+                        </p>
+                        <p class="text-muted mb-0">
+                            סקר מערכות מידע ERP, CRM, WEB
+                            <br />
+                            חברת פארמבצטיקה, נובמבר 2020
+                        </p>
+                    </div>
+                </div>
+                <!-- Testimonial Block 4 -->
+                <div class="testimonial-block card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <p class="mb-2">
+                            <em>"סדנת הסיילספורס היתה אינטימית ונעימה. הסדנה נגעה בדיוק בנקודות
+                                הקריטיות של תפעול המערכת ברמה היום יומית. התרגולים היו מעולים
+                                ונתנו לנו את היכולת להתמודד עם הנושא החדש שנלמד וליישמו במערכת.
+                            הזמינות שלך לשאלות הייתה נהדרת."</em>
+                        </p>
+                        <p class="mb-1">
+                            <strong>ענבל</strong>
+                        </p>
+                        <p class="text-muted mb-0">עמותות קרן מושל, 24.01.19</p>
+                    </div>
+                </div>
+                <!-- Testimonial Block 5 -->
+                <div class="testimonial-block card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <p class="mb-2">
+                            <em>"רויטל, תודה על שנה שלמה של סיוע ועזרה בייעוץ הקמת מערכת ERP
+                            במפעלי כצט, מצפה שנמשיך כך גם בשנת 2019."</em>
+                        </p>
+                        <p class="mb-1">
+                            <strong>אלכס</strong>
+                        </p>
+                        <p class="text-muted mb-0">מנמ"ר כצט, ינואר 2019</p>
+                    </div>
+                </div>
+                <!-- Testimonial Block 6 -->
+                <div class="testimonial-block card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <p class="mb-2">
+                            <em>"רויטל מלווה אותנו בכל נושא פריוריטי. רויטל מנוסה, חביבה, והכי
+                            חשוב – זמינה תמיד לפתור כל בעיה."</em>
+                        </p>
+                        <p class="mb-1">
+                            <strong>Francis Mazal</strong>
+                        </p>
+                        <p class="text-muted mb-0">חברת קומפדיה, נובמבר 2018</p>
+                    </div>
+                </div>
+                <!-- Testimonial Block 7 -->
+                <div class="testimonial-block card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <p class="mb-2">
+                            <em>"השתתפתי בסדנה שהעבירה רויטל. רויטל מעבירה את הסדנה בצורה מאוד
+                                מקצועית, עם המון סבלנות, ייסודיות ומפגינה הרבה מאוד ניסיון. על
+                                אף שעבדתי עם הסיילס פורס בעבר – הסדנה עשתה לי הרבה סדר, והצליחה
+                                לחדש לא מעט, בכל הקשור ליישום הבסיסי והיותר מורכב. מרגיש שקיבלתי
+                                כלים וידע בכל הקשור לאובייקטים של הסיילספורס, קשרי הגומלין
+                                ביניהם, הגדרות חשובות, ניהול שדות, דוחות ועוד. ממליץ בחום לכל מי
+                                שנדרש לתפעל את הפלטפורמה של סיילפורס ורוצה להכיר את המערכת בצורה
+                            מקצועית יותר, ולא רוצה להיות תלוי באנשי יישום חיצוניים."</em>
+                        </p>
+                        <p class="mb-1">
+                            <strong>ניב קנטור</strong>
+                        </p>
+                        <p class="text-muted mb-0">מומחה דיגיטל, אפריל 2019</p>
+                    </div>
+                </div>
+                <!-- Testimonial Block 8 -->
+                <div class="testimonial-block card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <p class="mb-2">
+                            <em>"הזדמן לי לעבוד עם רויטל כאשר הגיעה לחברת פואמיקס לסייע בהפעלה
+                                ושדרוג של תוכנת הפריוריטי שלנו. רויטל התבלטה מאד ביכולת המקצועית
+                                שלה ותוך זמן קצר אפשר היה לראות את השיפור בהבנה וביכולת של
+                                העובדים לתפעל בהצלחה את התוכנה. רויטל גם הובילה בהצלחה רבה
+                                פרויקטים להתאמת התוכנה לצרכים הספציפיים של החברה. עבודתה בוצעה
+                                תמיד באווירה טובה, בלויאליות, בהקשבה ובסבלנות. אשמח אם יצא לי
+                            לעבוד עם רויטל שוב בעתיד."</em>
+                        </p>
+                        <p class="mb-1">
+                            <strong>מילן הרן</strong>
+                        </p>
+                        <p class="text-muted mb-0">מנהלת המעבדה לפורמולציה וייצור, פואמיקס פרמצבטיקה בע"מ, מרץ 2017</p>
+                    </div>
+                </div>
+                <!-- Testimonial Block 9 -->
+                <div class="testimonial-block card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <p class="mb-2">
+                            <em>"רויטל היקרה, אנו מודים לך ונהנים משירותייך במערכת הפריוריטי.
+                                את מספקת לנו תמיכה, הדרכה, הטמעה והתפתחות של המערכת תוך צמיחה של
+                                חברת פואמיקס פארמבצטיקה, מובילה תהליכים משלב הרעיון ומביאה אותם
+                                לידי ביצוע. מציעה מגוון פתרונות, מספקת לנו מענה שלם לכל דרישות
+                                הפיתוח ושדרוג המערכת תוך ראיה מערכתית של צורכי הארגון. כל זאת
+                                בנועם הליכות, עם חיוך, סבלנות, מקצועיות עם הרבה ניסיון וידע שאת
+                                מביאה איתך. תמיד זמינה עבונו לכל שאלה או בעיה. תודה על פעילותך
+                            בחברתנו."</em>
+                        </p>
+                        <p class="mb-1">
+                            <strong>אלכס קרקוז</strong>
+                        </p>
+                        <p class="text-muted mb-0">מנהל רכש ושרשרת אספקה, פואמיקס פארמבצטיקה, מרץ 2016</p>
+                    </div>
+                </div>
+                <!-- Testimonial Block 10 -->
+                <div class="testimonial-block card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <p class="mb-2">
+                            <em>"Dear Revital, The guidebook I got at the beginning of the
+                                training on how to set up customers, first sales orders and
+                                customer shipment notesis still a great help. Thank you very
+                            much anyways for always being so kind and helpful."</em>
+                        </p>
+                        <p class="mb-1">
+                            <strong>Donna Italia Germany</strong>
+                        </p>
+                        <p class="text-muted mb-0">July 201</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Floating Contact Button & Modal -->
+        <button type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#myModal"
+                id="toggleContactBtn">הצג טופס צור קשר</button>
+        <div class="modal fade"
+             id="myModal"
+             tabindex="-1"
+             aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content shadow rounded-4 border-0 overflow-hidden">
+                    <div class="row g-0">
+                        <!-- Visual Branding -->
+                        <div class="col-md-5 d-none d-md-flex bg-primary text-white align-items-center justify-content-center flex-column p-4">
+                            <div class="text-center">
+                                <i class="fa-solid fa-envelope fa-4x mb-4"></i>
+                                <h3 class="mb-3 fw-bold">Harmony IT</h3>
+                                <p>
+                                    אנחנו כאן כדי לענות על כל השאלות שלך. צור איתנו קשר ונחזור
+                                    אליך בהקדם!
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Contact Form -->
+                        <div class="col-md-7 bg-white position-relative">
+                            <button type="button"
+                                    class="btn-close position-absolute m-3 top-0 start-0"
+                                    data-bs-dismiss="modal"
+                                    aria-label="סגור"></button>
+                            <div class="modal-header border-0 pb-0 justify-content-center">
+                                <h5 class="modal-title text-primary fw-bold" id="myModalLabel">צור קשר</h5>
+                            </div>
+                            <div class="modal-body pt-1">
+                                <form id="contactForm" method="post" action="{% url 'contact' %}">
+                                    {% csrf_token %}
+                                    <div class="mb-3">
+                                        <label for="{{ form.name.id_for_label }}" class="form-label">שם מלא</label>
+                                        {% render_field form.name placeholder="שם מלא"
+                                        required="required" class="form-control" %}
+                                        <div class="form-text text-danger" id="nameError"></div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="{{ form.email.id_for_label }}" class="form-label">אימייל</label>
+                                        {% render_field form.email placeholder="כתובת אימייל"
+                                        required="required" class="form-control" %}
+                                        <div class="form-text text-danger" id="emailError"></div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="{{ form.message.id_for_label }}" class="form-label">הודעה</label>
+                                        {% render_field form.message placeholder="כתוב את הודעתך
+                                        כאן..." rows="4" required="required" class="form-control" %}
+                                        <div class="form-text text-danger" id="messageError"></div>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary btn-lg">
+                                            <i class="fa-solid fa-paper-plane"></i> שלח הודעה
+                                        </button>
+                                    </div>
+                                    <div id="feedback" class="mt-3 text-center"></div>
+                                </form>
+                            </div>
+                            <div class="modal-footer border-0 pt-0">
+                                <button type="button"
+                                        class="btn btn-outline-secondary"
+                                        data-bs-dismiss="modal">סגור</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Scripts & Footer -->
+        <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          document.getElementById("nameError").textContent = "";
+          document.getElementById("emailError").textContent = "";
+          document.getElementById("messageError").textContent = "";
+          document.getElementById("feedback").textContent = "";
+          var valid = true;
+          var form = e.target;
+          var formData = new FormData(form);
+          if (formData.get("name").trim().length < 2) {
+            document.getElementById("nameError").textContent =
+              "נא להזין שם תקין.";
+            valid = false;
+          }
+          if (!formData.get("email").includes("@")) {
+            document.getElementById("emailError").textContent =
+              "נא להזין אימייל תקין.";
+            valid = false;
+          }
+          if (formData.get("message").trim().length < 10) {
+            document.getElementById("messageError").textContent =
+              "ההודעה חייבת להכיל לפחות 10 תווים.";
+            valid = false;
+          }
+          if (!valid) return;
+          fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: { "X-Requested-With": "XMLHttpRequest" },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                form.reset();
+                document.getElementById("feedback").textContent =
+                  "תודה, ההודעה נשלחה בהצלחה!";
+              } else {
+                document.getElementById("feedback").textContent =
+                  "אירעה שגיאה, אנא בדוק את הפרטים ונסה שנית.";
+              }
+            })
+            .catch((error) => {
+              document.getElementById("feedback").textContent =
+                "שגיאת מערכת, נסה שוב מאוחר יותר.";
+            });
+        });
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleBtn = document.getElementById("toggleContactBtn");
+        const footer = document.querySelector("footer");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                toggleBtn.style.opacity = "0";
+                toggleBtn.style.pointerEvents = "none";
+              } else {
+                toggleBtn.style.opacity = "1";
+                toggleBtn.style.pointerEvents = "auto";
+              }
+            });
+          },
+          { root: null, threshold: 0.1 }
+        );
+        if (footer) observer.observe(footer);
+      });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <footer>
+            © 2025 HarmonyIT - כל הזכויות שמורות.
+        </footer>
+    </body>
+</html>
