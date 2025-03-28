@@ -34,7 +34,7 @@ HarmonyIT is a professional Django-based web application designed to showcase a 
 1. **Clone the Repository:**
 
    ```bash
-   git clone [https://your-repository-url.git](https://github.com/gilos123/Hamrmony)
+   git clone https://github.com/gilos123/Hamrmony.git
    cd harmonyIT
    ```
 
