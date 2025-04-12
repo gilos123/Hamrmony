@@ -78,6 +78,23 @@
         padding: 20px; text-align: center;
         margin-top: 40px;
       }
+      #toggleContactBtn {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1000;
+        background-color: #006a91;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: transform 0.5s ease, background-color 0.5s ease, opacity 1.2s ease;
+      }
+      #toggleContactBtn:hover {
+        background-color: #004f6b;
+      }
     </style>
   </head>
   <body>
@@ -126,6 +143,39 @@
       </fieldset>
     </section>
 
+    <button type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#myModal"
+            id="toggleContactBtn">הצג טופס צור קשר</button>
+
+            <script>
+              document.addEventListener('DOMContentLoaded', () => {
+                const toggleBtn = document.getElementById('toggleContactBtn');
+                const contactContainer = document.getElementById('contactContainer');
+                const footer = document.querySelector('footer');
+          
+                // Intersection Observer to hide the toggle button when footer is in view
+                const observer = new IntersectionObserver((entries) => {
+                  entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                      toggleBtn.style.opacity = '0';
+                      toggleBtn.style.pointerEvents = 'none';
+                    } else {
+                      toggleBtn.style.opacity = '1';
+                      toggleBtn.style.pointerEvents = 'auto';
+                    }
+                  });
+                }, {
+                  root: null,
+                  threshold: 0.1
+                });
+            
+                if (footer) {
+                  observer.observe(footer);
+                }
+              });
+              </script>
     <footer>
       © 2025 HarmonyIT - כל הזכויות שמורות.
     </footer>

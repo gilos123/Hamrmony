@@ -7,6 +7,8 @@ def index_view(request):
     form = ContactForm()
     return render(request, 'harmonyApp/index.html', {'form': form})
 
+
+
 def priority_view(request):
     # Render index.html and pass an instance of ContactForm
     form = ContactForm()
