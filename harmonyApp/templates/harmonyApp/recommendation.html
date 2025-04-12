@@ -207,6 +207,31 @@
           flex-basis: 100%;
         }
       }
+      .content {
+        padding: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        text-align: center;
+        margin-top: 140px; /* Space for fixed header */
+      }
+    
+      .content h1 {
+        color: #1292b3;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+    
+      .content p {
+        font-size: 1.2em;
+        line-height: 1.8;
+        color: #555;
+        max-width: 800px;
+        margin: 0 auto;
+      }
         </style>
     </head>
     <body>
@@ -220,6 +245,9 @@
                 <ul>
                     <li>
                         <a href="{% url 'home' %}">ראשי</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'priority' %}">פריוריטי</a>
                     </li>
                     <li>
                         <a href="{% url 'about' %}">אודות</a>
@@ -236,11 +264,11 @@
         </header>
         <!-- Hero / Welcome Section -->
         <section class="content">
-            <h1>ברוכים הבאים ל-HarmonyIT</h1>
-            <p>
-                אנו מציעים קורסי הכשרה ב-Salesforce, מערכות CRM, ERP ועוד. מטרתנו היא
-                להקנות למשתתפים את הכלים הדרושים לניהול מערכות מידע בצורה מקצועית.
-            </p>
+          <h1>ברוכים הבאים ל-HarmonyIT</h1>
+          <p>
+            אנו מציעים קורסי הכשרה ב-Salesforce, מערכות CRM, ERP ועוד. מטרתנו היא
+            להקנות למשתתפים את הכלים הדרושים לניהול מערכות מידע בצורה מקצועית.
+          </p>
         </section>
         <!-- Recommendations / Testimonials Section -->
         <section class="content recommendations-section py-5">

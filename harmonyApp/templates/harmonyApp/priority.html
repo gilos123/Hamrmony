@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <title>HarmonyIT - מערכת פריוריטי</title>
+        <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap"
+              rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+              rel="stylesheet">
+        <link rel="shortcut icon" href="{% static 'fvaion-next.ico' %}">
+        <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Heebo', sans-serif;
+        }
+        body {
+            background-color: #eef3f7;
+            margin: 0;
+            padding-top: 130px; /* header fixed position space */
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1292b3;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .logo img {
+            height: 70px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3em;
+            padding-bottom: 5px;
+            border-bottom: 3px solid transparent;
+            transition: border-bottom 0.3s;
+        }
+        nav ul li a:hover {
+            border-bottom: 3px solid #afce12;
+        }
+        .phone {
+            font-size: 1.3em;
+        }
+        .top-section {
+            background-color: #844a86;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: 600;
+            position: relative;
+        }
+        .top-section .btn-primary {
+            background-color: #1292b3;
+            border: none;
+            padding: 8px 20px;
+            font-size: 1em;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 50%;
+        }
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .content h2 {
+            color: #1292b3;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .services-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        .services-list li {
+            background-color: #fafafa;
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+        .services-list li:hover {
+            background-color: #f0f8ff;
+        }
+        footer {
+            text-align: center;
+            background-color: #1292b3;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="https://harmony-it.co.il/wp-content/uploads/2018/03/logo-Harmony-IT-768x210.jpg"
+                     alt="HarmonyIT Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}">ראשי</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'priority' %}">ראשי</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'about' %}">אודות</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'recommendation' %}">המלצות</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contact' %}?next=/">צור קשר</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="phone">📞 058-4938049</div>
+        </header>
+        <!-- Priority Title Banner -->
+        <div class="priority-banner">יישום, הטמעה והדרכה על מערכת PRIORITY</div>
+        <!-- Main Content Container -->
+        <div class="priority-banner">
+            יישום, הטמעה והדרכה על מערכת PRIORITY
+          </div>
+        
+          <!-- Main Content Container -->
+          <section class="container-box">
+            <p>
+              מערכת הפריוריטי הינה מערכת ERP אשר מצויה בכ-2,000 ארגונים שונים בארץ, החל מעסקים קטנים,
+              ארגונים בינוניים ואף גדולים.
+            </p>
+            <p>
+              המערכת תומכת את פעילות השירות, הרכש, ניהול הפרויקטים, הלוגיסטיקה, המלאי, הייצור והפיננסי
+              של הארגון.
+            </p>
+            <p>
+              צוות Harmony-IT הינם מומחים בהקמת מערכות ERP בארגונים, בהרחבת התמיכה והטמעת תהליכים חדשים
+              בארגון.
+            </p>
+        
+            <!-- Services Title -->
+            <h2 class="services-title">השירותים שלנו</h2>
+        
+            <!-- Services List -->
+            <ul class="services-list">
+              <li>
+                קורס פריוריטי למשתמשי על – חדש!
+                <i class="fa-solid fa-plus"></i>
+              </li>
+              <li>
+                הקמת ויישום של מערכת הפריוריטי
+                <i class="fa-solid fa-plus"></i>
+              </li>
+              <li>
+                הסבת נתונים מקבצי אקסל או ממערכות אחרות אל מערכת הפריוריטי
+                <i class="fa-solid fa-plus"></i>
+              </li>
+              <li>
+                פיתוח והתאמה לצורכי הארגון
+                <i class="fa-solid fa-plus"></i>
+              </li>
+              <li>
+                הדרכה והטמעה
+                <i class="fa-solid fa-plus"></i>
+              </li>
+              <li>
+                וואלידציה של מערכת הפריוריטי לארגוני פארמה ומדיקל
+                <i class="fa-solid fa-plus"></i>
+              </li>
+            </ul>
+          </section>
+        
+        <!-- (Optional) Bootstrap JS Bundle -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
