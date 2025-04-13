@@ -1,0 +1,215 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8">
+    <title>הכן את המע' שלך לעמידה בדרישות SOX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    >
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+    <link rel="shortcut icon" href="{% static 'fvaion-next.ico' %}">
+    <style>
+      * {
+        font-family: "Heebo", sans-serif;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #eef3f7;
+        padding-top: 130px; /* Space for fixed header */
+      }
+
+      /* Header */
+      header {
+        position: fixed; 
+        top: 0; left: 0;
+        width: 100%;
+        background-color: #1292b3;
+        color: #fff;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+      }
+      .logo img {
+        height: 70px;
+      }
+      nav ul {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      nav ul li a {
+        color: white;
+        font-weight: bold;
+        font-size: 1.3em;
+        text-decoration: none;
+      }
+      .phone {
+        font-size: 1.3em;
+      }
+
+      /* Main Container */
+      .main-container {
+        max-width: 1200px;
+        margin: 40px auto;
+        display: flex;
+        gap: 30px;
+        padding: 0 15px;
+      }
+      /* Sidebar */
+      .main-container .sidebar {
+        flex: 1;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+        height: fit-content;
+      }
+      .main-container .sidebar h4 {
+        border-bottom: 2px solid #1292b3;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+      }
+      .main-container .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .main-container .sidebar ul li {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .main-container .sidebar ul li:last-child {
+        border-bottom: none;
+      }
+      /* Main Content */
+      .main-container .content {
+        flex: 3;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+      }
+      .main-container .content h1,
+      .main-container .content h2 {
+        color: #1292b3;
+        margin-bottom: 20px;
+      }
+      .main-container .content p,
+      .main-container .content ul {
+        font-size: 1.1em;
+        line-height: 1.6;
+      }
+      .main-container .content ul {
+        padding-right: 20px;
+      }
+      .main-container .content ul li {
+        margin-bottom: 8px;
+        position: relative;
+        padding-right: 15px;
+      }
+      .main-container .content ul li::before {
+        content: "•";
+        position: absolute;
+        right: 0;
+        color: #1292b3;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        background-color: #1292b3;
+        color: white;
+        padding: 20px;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <img
+          src="https://harmony-it.co.il/wp-content/uploads/2018/03/logo-Harmony-IT-768x210.jpg"
+          alt="HarmonyIT Logo"
+        >
+      </div>
+      <nav>
+        <ul>
+          <li><a href="{% url 'home' %}">ראשי</a></li>
+          <li><a href="{% url 'priority' %}">פריוריטי</a></li>
+          <li><a href="{% url 'about' %}">אודות</a></li>
+          <li><a href="{% url 'recommendation' %}">המלצות</a></li>
+          <li><a href="{% url 'contact' %}?next=/">צור קשר</a></li>
+        </ul>
+      </nav>
+      <div class="phone">📞 058-4938049</div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h4>עוד נושא</h4>
+        <ul>
+          <li>הכן את המע' שלך לעמידה בדרישות SOX</li>
+          <li>מערכת פריוריטי / זום – מעקב הזמנות רכש</li>
+          <li>הכנסת מסופונים לארגון</li>
+          <li>קיצורי דרך שימושיים במערכת Priority</li>
+        </ul>
+      </aside>
+
+      <!-- Main Text Content -->
+      <article class="content">
+        <h1>לקראת סוף שנה וביקורת SOX מתקרבת- האם הארגון ערוך לכך?</h1>
+        <p>אירגונים אשר נסחרים בבורסה בארץ או בארה"ב נדרשים לעמוד בתקנות ה SOX</p>
+        <p>ארגון אשר נסחר בבורסה בארה"ב נדרש לעמוד בסטנדרטים מחמירים יותר.</p>
+        <p>
+          <strong>
+            לדעתי האישית עמידה בסטנדרטים האלו נחוצים לכל ארגון לשמירה על אבטחת מידע ויצירת נהלים תקינים.
+          </strong>
+        </p>
+        <p>במאמר מוסגר המילה SOX נשמעת דומה למילה SEX אך הקשר ביניהם הינו שתי אותיות דומות</p>
+        <p>
+          דמיון נוסף במידה ויש בארגון ביקורת SOX זה בהחלט יכול להוציא את החשק מכל מנעמי החיים בעיקר אם הארגון נתפס לא מוכן.
+        </p>
+        <p>
+          ביקורת SOX נערכת לקראת סוף השנה ומתייחסת לפעילויות שונות של הארגון בכספים, תשתיות IT, מערכות מידע ועוד.
+        </p>
+        <p>
+          נתמקד במאמר זה במערכות מידע וכפי שכתבתי מומלץ לכל ארגון גם אינו חייב בכך.
+        </p>
+        <h2>להלן מספר דוגמאות לדרישות:</h2>
+        <ul>
+          <li>ניהול סיסמאות משתמשים- ניתן ליישם גם באמצעות Active directory</li>
+          <li>הפרדה של הרשאות משתמשים לפי תפקידים- למשל פותח הזמנת הרכש אינו יכול לאשר את הזמנת הרכש, מנהלת חשבונות המבצעת תשלום לספקים אינה יכולה להקים ספקים. אלו מונעים מצב של הטייה בפעולות העובדים.</li>
+          <li>בדיקת הרשאות משתמשים- האם לכל עובד מוגדרות הרשאות הרלונטיות אליו או לקבוצה אליה הוא משתייך, הרשאות מיותרות יכולות לגרום לנזק. הכוונה גם איזה סוג הרשאה, כתיבה או צפייה בלבד. למשל למקים הזמנות לקוח אין צורך בהרשאה למודול כספים.</li>
+          <li>תיעוד פיתוחים והתאמות במערכות מידע- אילו פיתוחים והתאמות בוצעו, מתי ומי אישר לבצע שינויים במערכת, רצוי גם תיעוד הבדיקות והפרדה בין סביבת פיתוח לסביבת אמת.</li>
+          <li>הוספת והורדת משתמשים- האם מתקיים נוהל מסודר בקליטת עובד והגדרת הרשות למערכות מידע, האם נוהל דומה מתקיים בעזיבת עובד. יש ארגונים שבהם עובדים אשר עזבו עדיין קיימים כפעילים במערכת, הנזק שעלול להיגרם ברור.</li>
+          <li>שינויים בהזמנות רכש- בדיקת מדרג המאשרים של הזמנות הרכש לפי מדיניות החברה, האם אכן מתקיים סבב אישורים כנדרש? האם החתימות מתועדות במערכת ומה קורה במקרה של שינוי בהזמנת רכש מאושרת.</li>
+        </ul>
+        <p>
+          לכאורה אלו דרישות מחמירות ומתישות, אך אם נערכים לעמוד בסטנדרטים הללו בפעילות השוטפת, ההכנה לביקורת הרבה יותר קלה.
+        </p>
+        <p class="mt-4">שיהיה בהצלחה</p>
+        <p style="font-size:0.9em; color:#666;">© כל הזכויות שמורות לרויטל טוינה - erp4you</p>
+      </article>
+    </div>
+
+    <footer>
+      © 2025 HarmonyIT - כל הזכויות שמורות.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
