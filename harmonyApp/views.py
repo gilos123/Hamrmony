@@ -11,6 +11,10 @@ def SOX_requirements_view(request):
     form = ContactForm()
     return render(request, 'harmonyApp/SOX_requirements.html', {'form': form})
 
+def Inserting_terminals_into_organization_view(request):
+    form = ContactForm()
+    return render(request, 'harmonyApp/Inserting_terminals_into_organization.html', {'form': form})
+
 def Purchase_Order_Tracking_view(request):
     form = ContactForm()
     return render(request, 'harmonyApp/Purchase_Order_Tracking.html', {'form': form})
