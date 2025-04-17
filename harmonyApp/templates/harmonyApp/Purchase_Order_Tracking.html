@@ -28,6 +28,72 @@
         padding-top: 130px; /* Space for fixed header */
       }
 
+      /* Sidebar container */
+.sidebar {
+  background-color: #f7f7f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 260px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Sidebar heading */
+.sidebar h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1292b3;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #1292b3;
+  padding-bottom: 0.5rem;
+}
+
+/* Reset default list styling */
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Each item */
+.sidebar ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+}
+.sidebar ul li:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+/* Icon */
+.sidebar ul li i {
+  color: #1292b3;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+}
+
+/* Link text */
+.sidebar ul li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+/* Hover states */
+.sidebar ul li:hover {
+  background-color: #eef3f7;
+}
+.sidebar ul li a:hover {
+  color: #844a86;
+}
+
       /* Header */
       header {
         position: fixed;
@@ -159,7 +225,7 @@
       <nav>
         <ul>
           <li><a href="{% url 'home' %}">דף בית</a></li>
-          <li><a href="{% url 'priority' %}">מערכת פריוריטי</a></li>
+          <li><a href="{% url 'priority' %}"> פריוריטי</a></li>
           <li><a href="{% url 'about' %}">אודות</a></li>
           <li><a href="{% url 'recommendation' %}">המלצות</a></li>
           <li><a href="{% url 'contact' %}?next=/">צור קשר</a></li>
@@ -168,8 +234,7 @@
       <div class="phone">📞 058‑4938049</div>
     </header>
 
-    <!-- Banner -->
-    <div class="banner">מערכת פריוריטי / זום – מעקב הזמנות רכש</div>
+    
 
     <!-- Main Container -->
     <div class="main-container">
@@ -177,10 +242,18 @@
       <aside class="sidebar">
         <h4>עוד נושא</h4>
         <ul>
-          <li>הכן את המע' שלך לעמידה בדרישות SOX</li>
-          <li>מערכת פריוריטי / זום – מעקב הזמנות רכש</li>
-          <li>הכנסת מסופונים לארגון</li>
-          <li>קיצורי דרך שימושיים במערכת Priority</li>
+          <li>
+            <i class="fa-solid fa-square"><a href="{% url 'SOX_requirements' %}"> הכן את המע' שלך לעמידה בדרישות SOX</a></i>
+          </li>
+          <li>
+            <i class="fa-solid fa-square"><a href="{% url 'Purchase_Order_Tracking' %}"> מערכת פריוריטי / זום – מעקב הזמנות רכש</a></i>
+          </li>
+          <li>
+            <i class="fa-solid fa-square"><a href="{% url 'Inserting_terminals_into_organization' %}">הכנסת מסופונים לארגון</a></i>
+          </li>
+          <li>
+            <i class="fa-solid fa-square"><a href="{% url 'priority_shortcuts' %}">קיצורי דרך שימושיים במערכת Priority</a></i>
+          </li>
         </ul>
       </aside>
 

@@ -19,6 +19,10 @@ def Purchase_Order_Tracking_view(request):
     form = ContactForm()
     return render(request, 'harmonyApp/Purchase_Order_Tracking.html', {'form': form})
 
+def priority_shortcuts_view(request):
+    form = ContactForm()
+    return render(request, 'harmonyApp/priority_shortcuts.html', {'form': form})
+
 def priority_view(request):
     # Render index.html and pass an instance of ContactForm
     form = ContactForm()
