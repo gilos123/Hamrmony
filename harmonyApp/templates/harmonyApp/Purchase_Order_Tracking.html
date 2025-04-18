@@ -4,18 +4,12 @@
   <head>
     <meta charset="UTF-8" />
     <title>מערכת פריוריטי / זום – מעקב הזמנות רכש</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Heebo&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap"
+          rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="shortcut icon" href="{% static 'fvaion-next.ico' %}" />
     <style>
       * {
@@ -217,25 +211,30 @@
     <!-- Header -->
     <header>
       <div class="logo">
-        <img
-          src="https://harmony-it.co.il/wp-content/uploads/2018/03/logo-Harmony-IT-768x210.jpg"
-          alt="HarmonyIT Logo"
-        />
+        <img src="https://harmony-it.co.il/wp-content/uploads/2018/03/logo-Harmony-IT-768x210.jpg"
+             alt="HarmonyIT Logo" />
       </div>
       <nav>
         <ul>
-          <li><a href="{% url 'home' %}">דף בית</a></li>
-          <li><a href="{% url 'priority' %}"> פריוריטי</a></li>
-          <li><a href="{% url 'about' %}">אודות</a></li>
-          <li><a href="{% url 'recommendation' %}">המלצות</a></li>
-          <li><a href="{% url 'contact' %}?next=/">צור קשר</a></li>
+          <li>
+            <a href="{% url 'home' %}">דף בית</a>
+          </li>
+          <li>
+            <a href="{% url 'priority' %}">פריוריטי</a>
+          </li>
+          <li>
+            <a href="{% url 'about' %}">אודות</a>
+          </li>
+          <li>
+            <a href="{% url 'recommendation' %}">המלצות</a>
+          </li>
+          <li>
+            <a href="{% url 'contact' %}?next=/">צור קשר</a>
+          </li>
         </ul>
       </nav>
       <div class="phone">📞 058‑4938049</div>
     </header>
-
-    
-
     <!-- Main Container -->
     <div class="main-container">
       <!-- Sidebar -->
@@ -243,10 +242,10 @@
         <h4>עוד נושא</h4>
         <ul>
           <li>
-            <i class="fa-solid fa-square"><a href="{% url 'SOX_requirements' %}"> הכן את המע' שלך לעמידה בדרישות SOX</a></i>
+            <i class="fa-solid fa-square"><a href="{% url 'SOX_requirements' %}">הכן את המע' שלך לעמידה בדרישות SOX</a></i>
           </li>
           <li>
-            <i class="fa-solid fa-square"><a href="{% url 'Purchase_Order_Tracking' %}"> מערכת פריוריטי / זום – מעקב הזמנות רכש</a></i>
+            <i class="fa-solid fa-square"><a href="{% url 'Purchase_Order_Tracking' %}">מערכת פריוריטי / זום – מעקב הזמנות רכש</a></i>
           </li>
           <li>
             <i class="fa-solid fa-square"><a href="{% url 'Inserting_terminals_into_organization' %}">הכנסת מסופונים לארגון</a></i>
@@ -256,7 +255,6 @@
           </li>
         </ul>
       </aside>
-
       <!-- Main Content -->
       <section class="content">
         <h1>לקראת סוף שנה וביקורת SOX מתקרבת- האם הארגון ערוך לכך?</h1>
@@ -282,8 +280,9 @@
           צורך העובדים בארגון נעזרים בשירותיו, אך מה לעשות יועץ זה אינו שולח חשבונית
           באופן מסודר אלא פעם בתקופה.
         </p>
-        <p><strong>טיפ!</strong> לפותח הזמנת הרכש הכמות = למחיר כך קל יותר לגרוע סכומים משתנים</p>
-
+        <p>
+          <strong>טיפ!</strong> לפותח הזמנת הרכש הכמות = למחיר כך קל יותר לגרוע סכומים משתנים
+        </p>
         <h2>מה אנו רוצים? בקרה שוטפת של הזמנת הרכש</h2>
         <p>במהלך חודש ינואר היועץ נתן שירותים בסכום של 50,000 $ ושלח חשבונית</p>
         <p>
@@ -297,7 +296,6 @@
           “טרם נתקבלה חשבונית”. מכאן נותרו בהזמנת הרכש 425,000 $, כמו כן אנו יודעים שיש
           לנו הוצאות לשלם בעתיד של 25,000 דולר
         </p>
-
         <h2>היתרונות:</h2>
         <ul>
           <li>דיווח עדכני על הסכום שנותר בהזמנת הרכש</li>
@@ -307,14 +305,12 @@
           <li>לחשב ברור יותר איך לתכנן את דיווח הוצאות לשלם</li>
           <li>מומלץ להיעזר גם בדוחות: למשל דוח בקרת תקציב מפורט</li>
         </ul>
-
         <p>
           לפרטים והסברים נוספים,
           <a href="{% url 'contact' %}" style="color:#1292b3">צרו קשר</a>.
         </p>
       </section>
     </div>
-
     <!-- Footer -->
     <footer>
       © 2025 HarmonyIT – כל הזכויות שמורות
